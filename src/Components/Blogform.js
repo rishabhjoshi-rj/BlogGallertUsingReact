@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 var rj = [];
-var obj = {};
+
 function Blogform() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -35,11 +35,7 @@ function Blogform() {
         autoClose: 3000,
       });
     } else {
-      // obj["title"] = $("#title").val();
-      // obj["author"] = $("#author").val();
-      // obj["blogtext"] = $("#BlogText").val();
-      // obj["url"] = url;
-      // rj.push(obj);
+     
       rj.push({
         title: $("#title").val(),
         author: $("#author").val(),
@@ -66,10 +62,7 @@ function Blogform() {
   const [cardComponent, toggleVisibility] = VisibilityHook(
     <React.Fragment>
       <Card
-        // title={title}
-        // author={author}
-        // blogtext={blog_text}
-        // url={url}
+        
         arr={rj}
       />
 
