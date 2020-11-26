@@ -2,19 +2,30 @@ import React from "react";
 import $ from "jquery";
 
 function EnlargedCard(props) {
+  console.log($(".more"));
   const saveBlog = (e) => {
-    $("#h1").html(`Title: ` + $(".title-update").val());
-    $("#h2").html(`Author: ` + $(".author-update").val());
+    $("body").removeClass("editing"); //this as first line of save function
+    $("#h1").html($(".title-update").val());
+    $("#h2").html($(".author-update").val());
+
+    if ($(".summary-update").val() === "") {
+      $("#h3").html($(".summary-update").attr("value"));
+    } else {
+      console.log("ouuu");
+      $("#h3").html($(".summary-update").val());
+    }
+
+    // const a = $("#h1").html();
+    // const b = $("#h2").html();
+    // props.updateTitle(a);
+    // props.updateAuthor(b);
   };
   const editBlog = (e) => {
+    $("body").addClass("editing");
     console.log("editfycj");
 
-    var title = e.target.parentElement
-      .querySelector("#h1")
-      .innerHTML.substring(7);
-    var author = e.target.parentElement
-      .querySelector("#h2")
-      .innerHTML.substring(8);
+    var title = e.target.parentElement.querySelector("#h1").innerHTML;
+    var author = e.target.parentElement.querySelector("#h2").innerHTML;
     var summary = e.target.parentElement.querySelector("#h3").innerHTML;
     console.log(props.title);
 
@@ -50,8 +61,8 @@ function EnlargedCard(props) {
             <img src={props.url} id="img4"></img>
           </div>
           <div className="card-body">
-            <h1 id="h1">Title: {props.title} </h1>
-            <h1 id="h2">Author: {props.author} </h1>
+            <h1 id="h1">{props.title} </h1>
+            <h1 id="h2">{props.author} </h1>
             <center>
               <h1>Blog</h1>
             </center>

@@ -35,19 +35,16 @@
 #heading2 {
   font-weight: 400;
 }
-/* body.editing #save {
-
+body.editing #save {
   visibility: visible;
-
 }
-*/
-/* body.editing #edit { 
+
+body.editing #edit {
   display: none;
-} */
-/* #save {
- 
+}
+#save {
   visibility: hidden;
-} */
+}
 
 #h,
 #h1,
