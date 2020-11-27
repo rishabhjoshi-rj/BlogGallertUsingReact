@@ -3,6 +3,9 @@ import VisibilityHook from "../Hooks/VisibilityHook";
 import EnlargedCard from "./EnlargedCard";
 
 import Home from "./Home";
+var currentCardData;
+
+var i;
 
 function Card(props) {
   var title = props.title;
@@ -17,18 +20,22 @@ function Card(props) {
         author={author}
         blogtext={blogtxt}
         url={url}
+        index={i}
+        arr={props.arr}
       />
-      <center>
-        <button
-          className="rjback btn btn-primary btn-lg"
-          onClick={() => {
-            toggleVisibility3();
-            toggleVisibility4();
-          }}
-        >
-          Back
-        </button>
-      </center>
+      <div className="container">
+        <center>
+          <button
+            className="rjback btn btn-primary btn-lg btn-block"
+            onClick={() => {
+              toggleVisibility3();
+              toggleVisibility4();
+            }}
+          >
+            Back to Blog Gallery
+          </button>
+        </center>
+      </div>
     </React.Fragment>,
 
     false
@@ -49,7 +56,8 @@ function Card(props) {
           className="rjbt btn btn-info"
           id="viewbt"
           onClick={() => {
-            toggleVisibility3(index);
+            i = index;
+            toggleVisibility3();
             toggleVisibility4();
           }}
         >
