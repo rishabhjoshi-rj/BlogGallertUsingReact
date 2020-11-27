@@ -35,7 +35,6 @@ function Blogform() {
         autoClose: 3000,
       });
     } else {
-     
       rj.push({
         title: $("#title").val(),
         author: $("#author").val(),
@@ -61,22 +60,20 @@ function Blogform() {
 
   const [cardComponent, toggleVisibility] = VisibilityHook(
     <React.Fragment>
-      <Card
-        
-        arr={rj}
-      />
-
-      <center>
-        <button
-          className="more btn btn-primary"
-          onClick={() => {
-            toggleVisibility();
-            toggleVisibility2();
-          }}
-        >
-          Add more Blogs
-        </button>
-      </center>
+      <Card arr={rj} />
+      <div className="container">
+        <center>
+          <button
+            className="more btn btn-primary btn-lg "
+            onClick={() => {
+              toggleVisibility();
+              toggleVisibility2();
+            }}
+          >
+            Add more Blogs
+          </button>
+        </center>
+      </div>
     </React.Fragment>,
 
     false
@@ -139,7 +136,7 @@ function Blogform() {
         </Link>
 
         <button
-          className="btn btn-primary btn-lg btn-block"
+          className="btn3 btn btn-primary btn-lg btn-block"
           onClick={() => {
             toggleVisibility();
             toggleVisibility2();
