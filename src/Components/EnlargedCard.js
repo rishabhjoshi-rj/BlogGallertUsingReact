@@ -2,7 +2,9 @@ import React from "react";
 import $ from "jquery";
 
 function EnlargedCard(props) {
-  console.log($(".more"));
+  var i = props.index;
+  var arr = props.arr;
+
   const saveBlog = (e) => {
     $("body").removeClass("editing"); //this as first line of save function
     $("#h1").html($(".title-update").val());
@@ -15,6 +17,8 @@ function EnlargedCard(props) {
       $("#h3").html($(".summary-update").val());
     }
 
+    console.log(arr);
+
     // const a = $("#h1").html();
     // const b = $("#h2").html();
     // props.updateTitle(a);
@@ -24,9 +28,13 @@ function EnlargedCard(props) {
     $("body").addClass("editing");
     console.log("editfycj");
 
-    var title = e.target.parentElement.querySelector("#h1").innerHTML;
-    var author = e.target.parentElement.querySelector("#h2").innerHTML;
-    var summary = e.target.parentElement.querySelector("#h3").innerHTML;
+    // var title = e.target.parentElement.querySelector("#h1").innerHTML;
+    // var author = e.target.parentElement.querySelector("#h2").innerHTML;
+    // var summary = e.target.parentElement.querySelector("#h3").innerHTML;
+
+    var title = arr[i].title;
+    var author = arr[i].author;
+    var summary = arr[i].blogtext;
     console.log(props.title);
 
     $("#h1").html(
@@ -58,23 +66,39 @@ function EnlargedCard(props) {
       <div id="cards" className="container mt-4">
         <div className="card">
           <div className="card-header">
-            <img src={props.url} id="img4"></img>
+            <img src={arr[i].url} id="img4"></img>
           </div>
           <div className="card-body">
-            <h1 id="h1">{props.title} </h1>
-            <h1 id="h2">{props.author} </h1>
+            <h1 id="h1">{arr[i].title} </h1>
+            <h1 id="h2">{arr[i].author} </h1>
+            <p id="date">{new Date().toString().substring(4, 15)}</p>
+
             <center>
-              <h1>Blog</h1>
+              <h1 id="blogHeading">Blog</h1>
             </center>
-            <p id="h3">{props.blogtext}</p>
+            <h1 id="h3">{arr[i].blogtext}</h1>
           </div>
         </div>
-        <button className="btn btn-info btn-lg" id="edit" onClick={editBlog}>
-          Edit
-        </button>
-        <button className="btn btn-success btn-lg" id="save" onClick={saveBlog}>
-          Save
-        </button>
+      </div>
+      <div className="container">
+        <center>
+          <button
+            className="btn btn-info btn-lg btn-block"
+            id="edit"
+            onClick={editBlog}
+          >
+            Edit Blog
+          </button>
+        </center>
+        <center>
+          <button
+            className="btn btn-success btn-lg btn-block"
+            id="save"
+            onClick={saveBlog}
+          >
+            Save
+          </button>
+        </center>
       </div>
     </React.Fragment>
   );
